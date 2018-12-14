@@ -78,7 +78,7 @@ watcher
 
 // watcher.add(['**']);
 
-// Get list of actual paths being watched on the filesystem
+/// Get list of actual paths being watched on the filesystem
 var watchedPaths = watcher.getWatched();
 
 // Stop watching.
