@@ -18,10 +18,15 @@ async function checkSync() {
     console.log("status", status);
     if (status && status.files.length > 0) {
         try {
+
+            console.log("");
+            console.log("Syncing...");
+            console.log("");
             await simpleGit.add('.');
             await simpleGit.commit("Changes");
-            let r = await simpleGit.push('origin', 'masters');
-            console.log("r",r);
+            let r = await simpleGit.push('origin', 'master');
+            console.log("");
+            console.log("Sync finished");
         }
         catch (e) {
             // handle the error
