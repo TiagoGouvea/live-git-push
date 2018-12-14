@@ -14,16 +14,16 @@ program.version(pkg.version);
 program.parse(process.argv);
 
 // Start watcher
-var watcher = chokidar.watch('./', {
+let watcher = chokidar.watch('./', {
     ignored: /(^|[\/\\])\../,
     persistent: true,
     ignoreInitial: true
 });
 
-var ready = false;
-var hasGitRepo = false;
+let ready = false;
+let hasGitRepo = false;
 
-var run = function (command) {
+let run = function (command) {
     return new Promise(function (resolve, reject) {
         exec(command, (err, stdout, stderr) => {
             if (err) {
@@ -35,7 +35,7 @@ var run = function (command) {
     });
 };
 
-var notify = function (value) {
+let notify = function (value) {
     console.log(value);
     if (!ready)
         return;
@@ -71,7 +71,7 @@ var notify = function (value) {
     });
 };
 
-var log = console.log.bind(console);
+let log = console.log.bind(console);
 
 // Add event listeners.
 watcher
@@ -94,7 +94,7 @@ watcher
 
 
 /// Get list of actual paths being watched on the filesystem
-var watchedPaths = watcher.getWatched();
+let watchedPaths = watcher.getWatched();
 
 // Stop watching.
 // watcher.close();
