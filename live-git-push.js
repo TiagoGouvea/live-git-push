@@ -12,7 +12,6 @@ program.version(pkg.version);
 
 program.parse(process.argv);
 
-
 // Start watcher
 var watcher = chokidar.watch('./', {
     ignored: /(^|[\/\\])\../,
