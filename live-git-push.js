@@ -5,12 +5,10 @@
 const {exec} = require('child_process');
 const fs = require('fs');
 const chokidar = require('chokidar');
-
 const program = require('commander');
 const pkg = require('./package.json');
 
 program.version(pkg.version);
-
 program.parse(process.argv);
 
 // Start watcher
@@ -84,7 +82,7 @@ watcher
     .on('unlink', path => notify(`File ${path} has been removed`))
     .on('addDir', path => notify(`Directory ${path} has been added`))
     .on('unlinkDir', path => notify(`Directory ${path} has been removed`))
-    .on('error', error => notify(`Watcher error: ${error}`))
+    .on('error', error => log(`Watcher error: ${error}`))
     .on('change', (path, stats) => {
         if (stats) console.log(`File ${path} changed size to ${stats.size}`);
     })
@@ -98,8 +96,6 @@ watcher
     });
 
 
-/// Get list of actual paths being watched on the filesystem
-let watchedPaths = watcher.getWatched();
+// let watchedPaths = watcher.getWatched();
 
-// Stop watching.
-// watcher.close();
+process.stdin.resume();
