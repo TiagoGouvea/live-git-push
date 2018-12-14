@@ -18,10 +18,9 @@ async function checkSync() {
     console.log("status", status);
     if (status && status.files.length > 0) {
         try {
-            simpleGit.add('.');
-            simpleGit.commit("Changes");
-            //     .push('origin', 'master', () => console.log('done'));
-            // console.log("result", result);
+            await simpleGit.add('.');
+            await simpleGit.commit("Changes");
+            await simpleGit.push('origin', 'master', () => console.log('done'));
         }
         catch (e) {
             // handle the error
