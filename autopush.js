@@ -1,21 +1,18 @@
 #!/usr/bin/env node
 'use strict';
 
-var pkg = require('./package.json');
-
-
+// Requires
 const {exec} = require('child_process');
-
-
 var chokidar = require('chokidar');
 
-
-// Initialize watcher.
+// Start watcher
 var watcher = chokidar.watch('./', {
     ignored: /(^|[\/\\])\../,
     persistent: true,
     ignoreInitial: true
 });
+
+var ready = false;
 
 var run = function (command) {
     return new Promise(function (resolve, reject) {
@@ -27,10 +24,10 @@ var run = function (command) {
             }
         });
     });
-}
+};
 
-var ready = false;
-// Something to use when events are received.
+
+
 var notify = function (value) {
     console.log(value);
     if (!ready)
