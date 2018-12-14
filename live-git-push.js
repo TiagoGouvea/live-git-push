@@ -41,7 +41,7 @@ let notify = function (value) {
         return;
 
     console.log(fs.existsSync('.git'));
-    console.warn(fs.existsSync('.git'));
+    console.warn(fs.existsSync('.git')); 
     // Check for git repo
     if (!hasGitRepo){
         hasGitRepo = fs.existsSync('.git');
