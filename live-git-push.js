@@ -3,11 +3,11 @@
 
 // Requires
 const {exec} = require('child_process');
-var fs = require('fs');
-var chokidar = require('chokidar');
+const fs = require('fs');
+const chokidar = require('chokidar');
 
-var program = require('commander');
-var pkg = require('./package.json');
+const program = require('commander');
+const pkg = require('./package.json');
 
 program.version(pkg.version);
 
