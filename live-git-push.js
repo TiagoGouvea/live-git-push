@@ -62,7 +62,7 @@ function startWathc() {
         //     log('Raw ev ent info:', event, path, details);
         // })
         .on('ready', () => {
-            log('Initial scan complete. Ready for changes');
+            log('Initial scan complete. Watching for changes...');
             ready = true;
         });
 }
