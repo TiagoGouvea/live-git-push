@@ -6,9 +6,11 @@ const {exec} = require('child_process');
 var chokidar = require('chokidar');
 
 var program = require('commander');
+var pkg = require( './package.json' );
+
+program.version( pkg.version );
 
 program
-    .version('0.1.0')
     .option('-p, --peppers', 'Add peppers')
     .option('-P, --pineapple', 'Add pineapple')
     .option('-b, --bbq-sauce', 'Add bbq sauce')
