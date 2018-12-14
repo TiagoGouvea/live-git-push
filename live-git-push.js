@@ -20,6 +20,7 @@ var watcher = chokidar.watch('./', {
 });
 
 var ready = false;
+var hasGitRepo = false;
 
 var run = function (command) {
     return new Promise(function (resolve, reject) {
@@ -37,6 +38,11 @@ var notify = function (value) {
     console.log(value);
     if (!ready)
         return;
+
+    // Check for git repo
+    if (!hasGitRepo){
+
+    }
 
     console.log("");
     console.log("Syncing...");
