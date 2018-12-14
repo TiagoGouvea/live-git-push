@@ -31,6 +31,8 @@ var notify = function (value) {
     if (!ready)
         return;
 
+    console.log("");
+    console.log("Syncing...");
     run('git add .').then(
         (stdout, stderr) => {
             console.log(stdout);
@@ -40,7 +42,8 @@ var notify = function (value) {
                     run('git push origin master').then(
                         (stdout, stderr) => {
                             console.log(stdout);
-                            console.log("Sync end");
+                            console.log("");
+                            console.log("Sync finished");
                         }
                     )
                 }
