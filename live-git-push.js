@@ -18,7 +18,6 @@ async function checkSync() {
     if (status && status.files.length > 0) {
         try {
 
-            console.log("");
             console.log("Syncing...");
             await simpleGit.add('.');
             await simpleGit.commit("Changes");
