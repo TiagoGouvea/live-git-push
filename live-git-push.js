@@ -35,20 +35,22 @@ let run = function (command) {
     });
 };
 
+function checkGitRepo() {
+    hasGitRepo = fs.existsSync('.git');
+    console.log("hasGitRepo",hasGitRepo);
+    if (!hasGitRepo)
+        console.warn("This path are not a git repository yet");
+    return hasGitRepo;
+}
+
 let notify = function (value) {
     console.log(value);
     if (!ready)
         return;
 
     // Check for git repo
-    if (!hasGitRepo){
-        hasGitRepo = fs.existsSync('.git');
-        console.log("hasGitRepo",hasGitRepo);
-        if (!hasGitRepo){
-            console.warn("This path are not a git repository yet");
-            return;
-        }
-    }
+    if (!hasGitRepo && !checkGitRepo())
+        return;
 
     console.log("");
     console.log("Syncing...");
@@ -91,6 +93,7 @@ watcher
     // })
     .on('ready', () => {
         log('Initial scan complete. Ready for changes');
+        checkGitRepo();
         ready = true;
     });
 
