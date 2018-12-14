@@ -3,6 +3,7 @@
 
 // Requires
 const {exec} = require('child_process');
+var fs = require('fs');
 var chokidar = require('chokidar');
 
 var program = require('commander');
@@ -42,6 +43,9 @@ var notify = function (value) {
     // Check for git repo
     if (!hasGitRepo){
 
+        if (fs.existsSync(path)) {
+            // Do something
+        }
     }
 
     console.log("");
