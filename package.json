@@ -1,0 +1,18 @@
+{
+  "name": "autopush",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node autopush.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "preferGlobal": true,
+  "bin": {
+    "calculatr": "autopush.js"
+  },
+  "dependencies": {
+    "chokidar": "^2.0.4"
+  }
+}
