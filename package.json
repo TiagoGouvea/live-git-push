@@ -7,7 +7,7 @@
     "start": "node autopush.js"
   },
   "author": "Tiago Gouvêa (https://github.com/TiagoGouvea/)",
-  "license": "ISC",
+  "license": "MIT",
   "preferGlobal": true,
   "bin": {
     "calculatr": "autopush.js"
