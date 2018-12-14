@@ -8,6 +8,38 @@ const chokidar = require('chokidar');
 const program = require('commander');
 const pkg = require('./package.json');
 
+const simpleGit = require('simple-git/promise')('.');
+
+let ready = false;
+let hasGitRepo = false;
+
+async function checkSync() {
+    let status = await simpleGit.status();
+    console.log("status", status);
+    if (status && status.files.length > 0) {
+        try {
+            simpleGit.add('.');
+            simpleGit.commit("Changes");
+            //     .push('origin', 'master', () => console.log('done'));
+            // console.log("result", result);
+        }
+        catch (e) {
+            // handle the error
+            console.error(e);
+        }
+
+    }
+}
+
+async function main() {
+    checkGitRepo();
+    checkSync();
+}
+
+main();
+
+return;
+
 program.version(pkg.version);
 program.parse(process.argv);
 
@@ -18,8 +50,6 @@ let watcher = chokidar.watch('./', {
     ignoreInitial: true
 });
 
-let ready = false;
-let hasGitRepo = false;
 
 let run = function (command) {
     return new Promise(function (resolve, reject) {
@@ -33,9 +63,8 @@ let run = function (command) {
     });
 };
 
-function checkGitRepo() {
-    hasGitRepo = fs.existsSync('.git');
-    console.log("hasGitRepo",hasGitRepo);
+async function checkGitRepo() {
+    hasGitRepo = await simpleGit.checkIsRepo();
     if (!hasGitRepo)
         console.warn("This path are not a git repository yet");
     return hasGitRepo;
