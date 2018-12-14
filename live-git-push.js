@@ -90,6 +90,8 @@ async function checkGitRepo() {
 
 main();
 
+process.stdin.resume();
+
 return;
 
 // program.version(pkg.version);
@@ -144,4 +146,3 @@ return;
 
 // let watchedPaths = watcher.getWatched();
 
-process.stdin.resume();
