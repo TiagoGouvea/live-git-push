@@ -40,11 +40,10 @@ let notify = function (value) {
     if (!ready)
         return;
 
-    console.log(fs.existsSync('.git'));
     // Check for git repo
     if (!hasGitRepo){
         hasGitRepo = fs.existsSync('.git');
-        console.log("hasGitRepo",hasGitRepo); 
+        console.log("hasGitRepo",hasGitRepo);
         if (!hasGitRepo){
             console.warn("This path are not a git repository yet");
             return;
