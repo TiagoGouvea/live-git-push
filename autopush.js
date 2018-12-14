@@ -26,8 +26,6 @@ var run = function (command) {
     });
 };
 
-
-
 var notify = function (value) {
     console.log(value);
     if (!ready)
