@@ -31,6 +31,8 @@ async function checkSync() {
             // handle the error
             console.error(e);
         }
+    } else {
+        console.log("Nothing to commit right now");
     }
 }
 
