@@ -6,16 +6,11 @@ const {exec} = require('child_process');
 var chokidar = require('chokidar');
 
 var program = require('commander');
-var pkg = require( './package.json' );
+var pkg = require('./package.json');
 
-program.version( pkg.version );
+program.version(pkg.version);
 
-program
-    .option('-p, --peppers', 'Add peppers')
-    .option('-P, --pineapple', 'Add pineapple')
-    .option('-b, --bbq-sauce', 'Add bbq sauce')
-    .option('-c, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble')
-    .parse(process.argv);
+program.parse(process.argv);
 
 console.log('you ordered a pizza with:');
 if (program.peppers) console.log('  - peppers');
@@ -67,9 +62,9 @@ var notify = function (value) {
                     )
                 }
             )
-        }).catch((err)=>{
-            console.log("Error running");
-            console.error(err);
+        }).catch((err) => {
+        console.log("Error running");
+        console.error(err);
     });
 };
 
