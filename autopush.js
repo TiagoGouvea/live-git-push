@@ -38,17 +38,14 @@ var notify = function (value) {
 
     run('git add .').then(
         (stdout, stderr) => {
-            console.log("1",stdout);
-            console.log("1",stderr);
+            console.log(stdout);
             run('git commit -m "Changes"').then(
                 (stdout, stderr) => {
-                    console.log("2",stdout);
-                    console.log("2",stderr);
+                    console.log(stdout);
                     run('git push origin master').then(
                         (stdout, stderr) => {
-                            console.log("3",stdout);
-                            console.log("3 ",stderr);
-                            console.log("OK!!?")
+                            console.log(stdout);
+                            console.log("Sync end");
                         }
                     )
                 }
