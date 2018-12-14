@@ -44,7 +44,7 @@ var notify = function (value) {
                 (stdout, stderr) => {
                     console.log("2",stdout);
                     console.log("2",stderr);
-                    run('git push master').then(
+                    run('git push origin master').then(
                         (stdout, stderr) => {
                             console.log("3",stdout);
                             console.log("3 ",stderr);
