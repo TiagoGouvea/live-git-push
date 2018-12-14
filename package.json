@@ -13,6 +13,7 @@
     "live-git-push": "live-git-push.js"
   },
   "dependencies": {
-    "chokidar": "^2.0.4"
+    "chokidar": "^2.0.4",
+    "commander": "^2.19.0"
   }
 }
