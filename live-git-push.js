@@ -20,13 +20,13 @@ async function checkSync() {
         try {
             await simpleGit.add('.');
             await simpleGit.commit("Changes");
-            await simpleGit.push('origin', 'master', () => console.log('done'));
+            let r = await simpleGit.push('origin', 'master');
+            console.log(r);
         }
         catch (e) {
             // handle the error
             console.error(e);
         }
-
     }
 }
 
