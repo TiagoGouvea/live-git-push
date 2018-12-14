@@ -26,7 +26,6 @@ async function checkSync() {
             console.log("");
         }
         catch (e) {
-            // handle the error
             console.error(e);
         }
     } else {
@@ -35,14 +34,12 @@ async function checkSync() {
 }
 
 function startWathc() {
-
     // Start watcher
     let watcher = chokidar.watch('./', {
         ignored: /(^|[\/\\])\../,
         persistent: true,
         ignoreInitial: true
     });
-
 
     let log = console.log.bind(console);
 
@@ -57,9 +54,6 @@ function startWathc() {
         .on('change', (path, stats) => {
             if (stats) console.log(`File ${path} changed size to ${stats.size}`);
         })
-        // .on('raw', (event, path, details) => {
-        //     log('Raw ev ent info:', event, path, details);
-        // })
         .on('ready', () => {
             log('Initial scan complete. Watching for changes...');
             ready = true;
@@ -99,28 +93,3 @@ async function notify(value) {
 main();
 
 process.stdin.resume();
-
-return;
-
-// program.version(pkg.version);
-// program.parse(process.argv);
-
-//
-// let run = function (command) {
-//     return new Promise(function (resolve, reject) {
-//         exec(command, (err, stdout, stderr) => {
-//             if (err) {
-//                 reject(err);
-//             } else {
-//                 resolve(stdout, stderr);
-//             }
-//         });
-//     });
-// };
-
-//
-
-//
-
-// let watchedPaths = watcher.getWatched();
-

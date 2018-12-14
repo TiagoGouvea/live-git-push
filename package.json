@@ -1,6 +1,6 @@
 {
   "name": "live-git-push",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A tool to keep a remote repo realtime synced with your local changes",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
