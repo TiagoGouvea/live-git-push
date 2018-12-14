@@ -43,7 +43,7 @@ let notify = function (value) {
     // Check for git repo
     if (!hasGitRepo){
 
-        if (fs.existsSync(path)) {
+        hasGitRepo = fs.existsSync('.git')) {
             // Do something
         }
     }
