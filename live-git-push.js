@@ -15,7 +15,6 @@ let hasGitRepo = false;
 
 async function checkSync() {
     let status = await simpleGit.status();
-    console.log("status", status);
     if (status && status.files.length > 0) {
         try {
 
@@ -64,7 +63,6 @@ function startWathc() {
         // })
         .on('ready', () => {
             log('Initial scan complete. Ready for changes');
-            checkGitRepo();
             ready = true;
         });
 }
@@ -77,7 +75,7 @@ async function sync() {
 async function main() {
     // First Sync
     await sync();
-   // startWathc();
+    startWathc();
 }
 
 async function checkGitRepo() {
@@ -87,6 +85,17 @@ async function checkGitRepo() {
     return hasGitRepo;
 }
 
+async function notify(value) {
+    console.log(value);
+    if (!ready)
+        return;
+
+    // Check for git repo
+    if (!hasGitRepo && !checkGitRepo())
+        return;
+
+    await checkSync();
+}
 
 main();
 
@@ -111,37 +120,7 @@ return;
 // };
 
 //
-// let notify = function (value) {
-//     console.log(value);
-//     if (!ready)
-//         return;
-//
-//     // Check for git repo
-//     if (!hasGitRepo && !checkGitRepo())
-//         return;
-//
-//     console.log("");
-//     console.log("Syncing...");
-//     run('git add .').then(
-//         (stdout, stderr) => {
-//             console.log(stdout);
-//             run('git commit -m "Changes"').then(
-//                 (stdout, stderr) => {
-//                     console.log(stdout);
-//                     run('git push origin master').then(
-//                         (stdout, stderr) => {
-//                             console.log(stdout);
-//                             console.log("");
-//                             console.log("Sync finished");
-//                         }
-//                     )
-//                 }
-//             )
-//         }).catch((err) => {
-//         console.log("Error running");
-//         console.error(err);
-//     });
-// };
+
 //
 
 // let watchedPaths = watcher.getWatched();
